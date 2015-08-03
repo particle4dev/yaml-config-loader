@@ -1,10 +1,10 @@
-A webpack loader for Markdown files with optional [yaml front matter][1].
+A webpack loader for YAML config.
 
 
 Installation
 ------------
 
-npm install markdown-with-front-matter-loader
+npm install ...
 
 
 Usage
@@ -14,44 +14,44 @@ Usage
 {
   module: {
     loaders: {
-      {test: /\.md$/, loader: 'markdown-with-front-matter'},
+      {
+        test: /\.yml$/,
+        loaders: ["file-loader?name=[name].skybreak.json", "yaml-config-loader"]
+      }
     ]
   }
 }
 ```
 
-The result of importing a markdown file will be a JavaScript object with
-properties from the front matter (as parsed by [js-yaml-front-matter]) and a
-`__content` property containing the transformed markdown. For example,
+The result of importing a YAML config file will be a JavaScript object. For example,
 
 ```
----
-name: Winston the Bulldog
-contact:
-  email: dogsdontuseemail@hzdg.com
----
+title: Skybreak
+subtitle:
+description:
+author: Hoang Le
+language:
+timezone:
 
+anita_antoinette: Turn Your Lights Down Low
 
-I LIKE TO EAT CATS
-==================
+url: http://localhost:4000
+webpackURL: http://localhost:8080
 
-* Fat cats
-* Skinny cats
-* Whatever
+http:
+  port: 4000
+
+template: 
+  file: template.html
+
+public:
+  general:
+    title: iojs vietnam
+    description: Bringing ES6 to the Node Community in Vietnam.
 ```
 
 becomes
 
 ```
-{
-  name: 'Winston the Bulldog',
-  contact: {
-    email: 'dogsdontuseemail@hzdg.com',
-  },
-  __content: '<h1 id="i-like-to-eat-cats">I LIKE TO EAT CATS</h1>\n<ul>\n<li>Fat cats</li>\n<li>Skinny cats</li>\n<li>Whatever</li>\n</ul>\n',
-}
+{"title":"Skybreak","subtitle":null,"description":null,"author":"Hoang Le","language":null,"timezone":null,"anita_antoinette":"Turn Your Lights Down Low","url":"http://localhost:4000","webpackURL":"http://localhost:8080","http":{"port":4000},"template":{"file":"template.html"},"public":{"general":{"title":"iojs vietnam","description":"Bringing ES6 to the Node Community in Vietnam."}}}
 ```
-
-
-[1]: http://jekyllrb.com/docs/frontmatter/
-[js-yaml-front-matter]: https://github.com/dworthen/js-yaml-front-matter
