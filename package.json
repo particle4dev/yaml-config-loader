@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:matthewwithanm/markdown-with-front-matter-loader.git"
+    "url": "git@github.com:particle4dev/yaml-config-loader.git"
   },
   "keywords": [
     "config",
@@ -23,9 +23,9 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/matthewwithanm/markdown-with-front-matter-loader/issues"
+    "url": "https://github.com/particle4dev/yaml-config-loader/issues"
   },
-  "homepage": "https://github.com/matthewwithanm/markdown-with-front-matter-loader",
+  "homepage": "https://github.com/particle4dev/yaml-config-loader",
   "dependencies": {
     "js-yaml": "^3.3.1"
   },
